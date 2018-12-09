@@ -30,7 +30,7 @@ for filename in os.listdir(sys.argv[1]):
 	# Open image
 	print(path)
 	img = cv2.imread(path)
-	imgData = processImage(img).ravel()
+	imgData = processImage(img).ravel().astype(int)
 
 	# Add to dataset
 	if (dataset.size == 0):
@@ -41,5 +41,5 @@ for filename in os.listdir(sys.argv[1]):
 
 # Save dataset
 print("Saving dataset\n", dataset)
-np.savetxt("dataset.csv", dataset, delimiter=",")
+np.savetxt("dataset.csv", dataset, fmt='%i', delimiter=",")
 
