@@ -12,12 +12,9 @@ if (len(sys.argv) == 1):
 
 # Process image
 def processImage(img):
-	imgray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-	imcolor = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-	
-	ret, thresh = cv2.threshold(imgray, 127, 255, 0)
-	im2, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-	return imgray
+	# res = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	res = cv2.Canny(img,100,200)
+	return res
 
 
 # Load image
