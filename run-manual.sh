@@ -13,12 +13,15 @@ for item in `cat resources/top-1m.csv`;
 do 
     rank=${item%,*}
     url=https://${item#*,}
-    filename=${rank}_${item#*,}
+    filename=output2/${rank}_${item#*,}
 
     # sed '1d' ${INPUT_LIST} > tmp.txt
     # mv tmp.txt ${INPUT_LIST}
 
     if [ "$rank" -gt "$1" ]; then
-        timeout 20 phantomjs siteshot/siteshot-single.js ${url} ${filename}
+        open ${url}
+        sleep 20
+        # open ${url} && sleep 1 # Switch to window before capturing
+        screencapture -x ${filename}.png
     fi
 done
