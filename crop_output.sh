@@ -1,16 +1,17 @@
 #!/bin/bash
 
+WORKSPACE_DIR=workspace
+CAPTURED_DIR=${WORKSPACE_DIR}/captured
+CROPPED_DIR=${WORKSPACE_DIR}/cropped
+
 SIZE=3360x2100
-INPUT_DIR=input
-OUTPUT_DIR=output
 
 # Load config variables
 # source config.sh
 
 # For each output image
-mkdir -p ${OUTPUT_DIR}
-for item in $(ls -1tr ${INPUT_DIR})
+for item in $(ls -1tr ${CAPTURED_DIR})
 do
     echo ${item}
-    convert ${INPUT_DIR}/${item} -gravity west -crop ${SIZE}+0+190 ${OUTPUT_DIR}/${item}
+    convert ${CAPTURED_DIR}/${item} -gravity west -crop ${SIZE}+0+150 ${CROPPED_DIR}/${item}
 done
